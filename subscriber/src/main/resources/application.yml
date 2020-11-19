@@ -1,0 +1,19 @@
+server:
+  port: 8083
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        runArtefact-in-0:
+          destination: subscriber
+          group: subscriber
+          binder: rabbit
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  rabbitmq:
+    host: rabbitmq

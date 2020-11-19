@@ -1,0 +1,18 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    stream:
+      bindings:
+        deployCommit-out-0:
+          destination: processor
+          binder: rabbit
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  rabbitmq:
+    host: rabbitmq
+

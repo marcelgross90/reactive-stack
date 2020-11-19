@@ -1,0 +1,24 @@
+server:
+  port: 8082
+
+spring:
+  cloud:
+    function:
+      definition: prepareBuild|build
+    stream:
+      bindings:
+        prepareBuild|build-in-0:
+          destination: processor
+          group: processor
+          binder: rabbit
+        prepareBuild|build-out-0:
+          destination: subscriber
+          binder: rabbit
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  rabbitmq:
+    host: rabbitmq

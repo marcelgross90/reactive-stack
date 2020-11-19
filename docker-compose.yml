@@ -1,0 +1,28 @@
+version: '2.2'
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  subscriber:
+    build: "subscriber/."
+    ports:
+      - 8083:8083
+    depends_on:
+      - "rabbitmq"
+
+  processor:
+    build: "processor/."
+    ports:
+      - 8082:8082
+    depends_on:
+      - "subscriber"
+
+  publisher:
+    build: "publisher/."
+    ports:
+      - 8081:8081
+    depends_on:
+      - "processor"
