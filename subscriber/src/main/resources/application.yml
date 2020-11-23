@@ -1,6 +1,10 @@
 server:
   port: 8083
 
+logging:
+  level:
+    org.springframework.data.r2dbc: DEBUG
+
 spring:
   cloud:
     stream:

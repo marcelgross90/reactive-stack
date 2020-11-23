@@ -29,6 +29,12 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-function-kotlin")
     implementation("org.springframework.cloud:spring-cloud-stream")
     implementation("org.springframework.cloud:spring-cloud-stream-binder-rabbit")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    runtimeOnly("com.h2database:h2")
+    runtimeOnly("io.r2dbc:r2dbc-h2")
+
+
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
