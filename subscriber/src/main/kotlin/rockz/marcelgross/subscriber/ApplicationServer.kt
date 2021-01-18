@@ -14,12 +14,13 @@ class ApplicationServer(
 
     @Bean
     fun runArtefact(): Consumer<Flux<Artefact>> = Consumer {
-        it.map {artefact ->
+        it.flatMap {artefact ->
             repo.save(artefact.lastCommit)
-            artefact
+
         }
         .subscribe {artefact ->
-            log(artefact)
+            println(artefact)
+//            log(artefact)
         }
 
     }

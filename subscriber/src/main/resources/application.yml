@@ -3,9 +3,12 @@ server:
 
 logging:
   level:
-    org.springframework.data.r2dbc: DEBUG
+    org.springframework.data.r2dbc: trace
 
 spring:
+  h2:
+    console:
+      enabled:true
   cloud:
     stream:
       bindings:
